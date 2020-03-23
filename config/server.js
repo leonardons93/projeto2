@@ -7,8 +7,6 @@ app.set('views', './app/views');
 
 consign()
 	.include('app/rotas')
-	
-	.then('app/models')
 	.into(app);
 
 module.exports = app;
