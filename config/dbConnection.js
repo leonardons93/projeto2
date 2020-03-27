@@ -10,6 +10,8 @@ async function main() {
 
 		// Make the appropriate DB calls
 		await listDatabases(client);
+		// inserir somente uma lista de itens
+		await inserirSimples(client, json);
 
 	} catch (e) {
 		console.error(e);
@@ -26,3 +28,7 @@ async function listDatabases(client) {
 	console.log("Databases:");
 	databasesList.databases.forEach(db => console.log(` - ${db.name}`));
 };
+async function inserirSimples(client, novoitem) {
+	const result = await client.db("test").collection("devices").insertOne(novoitem);
+	console.log(`New listing created with the following id: ${result.insertedId}`);
+}
